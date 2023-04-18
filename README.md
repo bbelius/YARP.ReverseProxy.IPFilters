@@ -14,10 +14,10 @@ ensuring secure and flexible access management.
 
 ## Installation
 
-Install the package via NuGet:
+Install the package via [NuGet](https://www.nuget.org/packages/BBelius.Yarp.ReverseProxy.IPFilters/):
 
 ```
-Install-Package BBelius.Yarp.ReverseProxy.IPFilters
+dotnet add package BBelius.Yarp.ReverseProxy.IPFilters
 ```
 
 ## Usage
