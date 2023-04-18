@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6;net7</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<Version>1.0.3</Version>
+	<Authors>Benjamin Belikov</Authors>
+	<Description>A customizable IP filtering middleware for YARP (Yet Another Reverse Proxy) that adds IP filtering features. This package provides fine-grained control over which IP addresses are allowed or blocked globally, as well as on a per-route basis, ensuring secure and flexible access management.</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageProjectUrl>https://github.com/bbelius/YARP.ReverseProxy.IPFilters</PackageProjectUrl>
+	<PackageId>BBelius.Yarp.ReverseProxy.IPFilters</PackageId>
+	<PackageTags>Yarp;ReverseProxy;IP;Filter;CIDR</PackageTags>
+	<PackageReleaseNotes>initial release</PackageReleaseNotes>
+	<Title>YARP ReverseProxy policy based IP filtering.</Title>
+	<Copyright>Copyright (c) 2023 Benjamin Belikov</Copyright>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/bbelius/YARP.ReverseProxy.IPFilters</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<IncludeSymbols>True</IncludeSymbols>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Yarp.ReverseProxy" Version="2.*" />
+  </ItemGroup>
+	
+</Project>

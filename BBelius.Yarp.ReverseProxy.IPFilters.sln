@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBelius.Yarp.ReverseProxy.IPFilters", "src\BBelius.Yarp.ReverseProxy.IPFilters.csproj", "{170D781F-47DC-4623-AC5C-32F5F7DE847E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16445079-F372-4A9D-A158-BEA090A9B769}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		icon.png = icon.png
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F7E8A44A-BE4C-433E-BE76-6767AC1AFE25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "test\UnitTests\UnitTests.csproj", "{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{170D781F-47DC-4623-AC5C-32F5F7DE847E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170D781F-47DC-4623-AC5C-32F5F7DE847E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170D781F-47DC-4623-AC5C-32F5F7DE847E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170D781F-47DC-4623-AC5C-32F5F7DE847E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{23FF47D3-DAAD-4CAC-95E4-CC6F45143B19} = {F7E8A44A-BE4C-433E-BE76-6767AC1AFE25}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B9735E8-E5E4-466B-A9A9-5CB3B4D02E88}
+	EndGlobalSection
+EndGlobal
