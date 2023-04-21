@@ -9,8 +9,8 @@ namespace BBelius.Yarp.ReverseProxy.IPFilters;
 /// </summary>
 public class IPFilterPolicy
 {
-	private IPAddress[]? _ipAddresses = null;
-	private IPNetwork[]? _ipNetworks = null;
+	private HashSet<IPAddress>? _ipAddresses = null;
+	private IPNetworkCollection? _ipNetworks = null;
 
 	/// <summary>
 	/// The name of the policy. This is used to identify the policy in the route configuration.
@@ -33,21 +33,16 @@ public class IPFilterPolicy
 	public List<string> IPNetworks { get; init; } = new();
 
 	/// <summary>
-	/// If true, unknown remote IP addresses will be blocked. Default: true
-	/// </summary>
-	public bool BlockUnknownRemoteIP { get; init; } = true;
-
-	/// <summary>
 	/// Returns the parsed IPAddresses as an array of IPAddress objects.
 	/// The parsing is done lazily, and the result is cached for subsequent calls.
 	/// </summary>
-	public IPAddress[] GetIPAddresses ()=> _ipAddresses ??= IPAddresses.Select(IPAddress.Parse).ToArray();
+	public HashSet<IPAddress> GetIPAddresses() => _ipAddresses ??= new HashSet<IPAddress>(IPAddresses.Select(IPAddress.Parse));
 
 	/// <summary>
 	/// Returns the parsed IPNetworks as an array of IPNetwork objects.
 	/// The parsing is done lazily, and the result is cached for subsequent calls.
 	/// </summary>
-	public IPNetwork[] GetIPNetworks() => _ipNetworks ??= IPNetworks.Select(ToIPNetwork).ToArray();
+	public IPNetworkCollection GetIPNetworks() => _ipNetworks ??= new IPNetworkCollection(IPNetworks.Select(ToIPNetwork));
 
 	private static IPNetwork ToIPNetwork(string ipNetwork)
 	{

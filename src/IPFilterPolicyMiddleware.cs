@@ -36,36 +36,19 @@ public class IPFilterPolicyMiddleware
 	/// <exception cref="IPFilterPolicyNotFoundException">Exception is thrown if policy is not found</exception>
 	public async Task InvokeAsync(HttpContext context)
 	{
-		var remoteIP = context.Connection.RemoteIpAddress;
+		IPAddress remoteIP = context.Connection.RemoteIpAddress!;
 
-		if (remoteIP?.IsIPv4MappedToIPv6 ?? false)
+		if (remoteIP.IsIPv4MappedToIPv6)
 			remoteIP = remoteIP.MapToIPv4();
 
 		var globalPolicy = _policyProvider.GetGlobalPolicy();
 
 		// If the global policy is not null, check if the remote IP is allowed.
-		if (globalPolicy is not null)
+		if (globalPolicy is not null && !IsRemoteIPAllowed(remoteIP, globalPolicy))
 		{
-			if (remoteIP is null)
-			{
-				if (globalPolicy.BlockUnknownRemoteIP)
-				{
-					_logger.LogWarning("Request from unknown IP is forbidden. Global Policy {policyName}", globalPolicy.PolicyName);
-
-					context.Response.StatusCode = StatusCodes.Status403Forbidden;
-					return;
-				}
-			}
-			else
-			{
-				// If the IP is not allowed, block the request and shortcut middleware chain.
-				if (!IsRemoteIPAllowed(remoteIP, globalPolicy))
-				{
-					_logger.LogWarning("Request from IP {ip} was blocked. Global Policy: {policyName}. Mode: {mode}", remoteIP, globalPolicy.PolicyName, globalPolicy.Mode);
-					context.Response.StatusCode = StatusCodes.Status403Forbidden;
-					return;
-				}
-			}
+			_logger.LogWarning("Request from IP {ip} was blocked. Global Policy: {policyName}. Mode: {mode}", remoteIP, globalPolicy.PolicyName, globalPolicy.Mode);
+			context.Response.StatusCode = StatusCodes.Status403Forbidden;
+			return;
 		}
 
 		var route = context.GetReverseProxyFeature().Route;
@@ -97,26 +80,6 @@ public class IPFilterPolicyMiddleware
 			return;
 		}
 
-		// If the IP is null and the policy is set to block unknown IPs, block the request and shortcut middleware chain.
-		if (remoteIP is null)
-		{
-			if (policy.BlockUnknownRemoteIP)
-			{
-				_logger.LogWarning("Request from unknown IP is forbidden. Policy: {policyName}. Route: {routeName}", policy.PolicyName, route.Config.RouteId);
-
-				context.Response.StatusCode = StatusCodes.Status403Forbidden;
-				return;
-			}
-			else
-			{
-				// If the IP is null and the policy is set to allow unknown IPs, bypass the IPFilter.
-				_logger.LogInformation("Request from unknown IP is allowed. Policy: {policyName}. Route: {routeName}", policy.PolicyName, route.Config.RouteId);
-
-				await _next(context);
-				return;
-			}
-		}
-
 		// If the IP is not allowed, block the request and shortcut middleware chain.
 		if (!IsRemoteIPAllowed(remoteIP, policy))
 		{
@@ -133,8 +96,8 @@ public class IPFilterPolicyMiddleware
 	private static bool IsRemoteIPAllowed(IPAddress remoteIP, IPFilterPolicy policy)
 		=> policy.Mode switch
 		{
-			IPFilterPolicyMode.AllowList => policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Any(_ => _.Contains(remoteIP)),
-			IPFilterPolicyMode.BlockList => !(policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Any(_ => _.Contains(remoteIP))),
+			IPFilterPolicyMode.AllowList => policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Contains(remoteIP),
+			IPFilterPolicyMode.BlockList => !(policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Contains(remoteIP)),
 			_ => false
 		};
 }

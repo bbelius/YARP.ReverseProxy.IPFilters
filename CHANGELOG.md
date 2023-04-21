@@ -7,8 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.3] - 2023-04-18
+## [1.1.0] - 2023-04-22
+### Changed
+- Internal list of IPAddress to HashSet for faster lookup
+- Internal list of IPNetwork to trie based IPNetworkCollection for faster lookup
+- Nuget symbols file format to snupkg
+### Removed
+- Null-check for RemoteIPAddress: should never be null when being used with YARP
+- IPFilterPolicy.BlockUnknownRemoteIP: Remote IP should never be null when being used with YARP
 
+## [1.0.3] - 2023-04-18
 ### Added
 - Initial release
 - IPAddress based filtering (allow- and block-mode)

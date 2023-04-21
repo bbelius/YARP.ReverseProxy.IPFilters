@@ -38,9 +38,9 @@ builder.Services.AddIPFilterPolicies(configuration);
 // Register the reverse proxy routes
 app.MapReverseProxy(proxyPipeline =>
 {
-    proxyPipeline.UseIPFilterPolicies();
-	proxyPipeline.UseLoadBalancing();
-    [...]
+   proxyPipeline.UseIPFilterPolicies();
+   proxyPipeline.UseLoadBalancing();
+   [...]
 });
 [...]
 ```
@@ -61,8 +61,7 @@ More information about the YARP middleware pipeline can be found [here](https://
       // Block remote IPs matching the list
         "PolicyName": "Global",
         "Mode": "BlockList",
-        "IPAddresses": ["192.168.0.3", "192.168.0.4"],
-        "BlockUnknownRemoteIP": false // Defaults to true
+        "IPAddresses": ["192.168.0.3", "192.168.0.4"]
       },
       {
       // Block remote IPs not within the networks
