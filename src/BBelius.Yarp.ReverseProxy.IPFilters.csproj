@@ -4,7 +4,7 @@
     <TargetFrameworks>net6;net7</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>1.1.0</Version>
+	<Version>1.1.1</Version>
 	<Authors>Benjamin Belikov</Authors>
 	<Description>A customizable IP filtering middleware for YARP (Yet Another Reverse Proxy) that adds IP filtering features. This package provides fine-grained control over which IP addresses are allowed or blocked globally, as well as on a per-route basis, ensuring secure and flexible access management.</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>

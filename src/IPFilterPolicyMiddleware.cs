@@ -96,8 +96,8 @@ public class IPFilterPolicyMiddleware
 	private static bool IsRemoteIPAllowed(IPAddress remoteIP, IPFilterPolicy policy)
 		=> policy.Mode switch
 		{
-			IPFilterPolicyMode.AllowList => policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Contains(remoteIP),
-			IPFilterPolicyMode.BlockList => !(policy.GetIPAddresses().Any(_ => _.Equals(remoteIP)) || policy.GetIPNetworks().Contains(remoteIP)),
+			IPFilterPolicyMode.AllowList => policy.GetIPAddresses().Contains(remoteIP) || policy.GetIPNetworks().Contains(remoteIP),
+			IPFilterPolicyMode.BlockList => !(policy.GetIPAddresses().Contains(remoteIP) || policy.GetIPNetworks().Contains(remoteIP)),
 			_ => false
 		};
 }
