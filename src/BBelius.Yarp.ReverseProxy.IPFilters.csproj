@@ -14,8 +14,6 @@
 	<PackageReleaseNotes>
 		### Added
 		- .Net 8 as target framework
-		### Updated
-		- `YARP.ReverseProxy` dependency
 		### Fixed
 		- Ambiguous use of `IPNetwork` when targeting .Net 8
 	</PackageReleaseNotes>
@@ -47,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
+	<PackageReference Include="Yarp.ReverseProxy" Version="2.*" />
   </ItemGroup>
 	
 </Project>
