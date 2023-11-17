@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6;net7</TargetFrameworks>
+    <TargetFrameworks>net6;net7;net8</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>1.1.1</Version>
+	<Version>1.2.0</Version>
 	<Authors>Benjamin Belikov</Authors>
 	<Description>A customizable IP filtering middleware for YARP (Yet Another Reverse Proxy) that adds IP filtering features. This package provides fine-grained control over which IP addresses are allowed or blocked globally, as well as on a per-route basis, ensuring secure and flexible access management.</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageProjectUrl>https://github.com/bbelius/YARP.ReverseProxy.IPFilters</PackageProjectUrl>
 	<PackageId>BBelius.Yarp.ReverseProxy.IPFilters</PackageId>
 	<PackageTags>Yarp;ReverseProxy;IP;Filter;CIDR</PackageTags>
-	<PackageReleaseNotes>### Changed
-		- Internal list of IPAddress to HashSet for faster lookup
-		- Internal list of IPNetwork to trie based IPNetworkCollection for faster lookup
-		- Nuget symbols file format to snupkg
-		### Removed
-		- Null-check for RemoteIPAddress (should never be null when being used with YARP)
-		- BlockUnknownRemoteIP</PackageReleaseNotes>
+	<PackageReleaseNotes>
+		### Added
+		- .Net 8 as target framework
+		### Updated
+		- `YARP.ReverseProxy` dependency
+		### Fixed
+		- Ambiguous use of `IPNetwork` when targeting .Net 8
+	</PackageReleaseNotes>
 	<Title>YARP ReverseProxy policy based IP filtering.</Title>
 	<Copyright>Copyright (c) 2023 Benjamin Belikov</Copyright>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -39,10 +40,14 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+	<None Include="..\CHANGELOG.md">
+		<Pack>True</Pack>
+		<PackagePath>\</PackagePath>
+	</None>
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Yarp.ReverseProxy" Version="2.*" />
+	<PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
   </ItemGroup>
 	
 </Project>
