@@ -7,7 +7,7 @@ namespace BBelius.Yarp.ReverseProxy.IPFilters;
 /// </summary>
 public class IPFilterPolicyProvider : IIPFilterPolicyProvider
 {
-	private IDictionary<string, IPFilterPolicy> _policies = new Dictionary<string, IPFilterPolicy>();
+	private Dictionary<string, IPFilterPolicy> _policies = [];
 	private IPFilterPolicy? _globalPolicy = null;
 
 	/// <summary>

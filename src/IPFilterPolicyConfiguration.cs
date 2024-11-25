@@ -8,7 +8,7 @@ public class IPFilterPoliciesConfiguration
 	/// <summary>
 	/// List of IP filter policies.
 	/// </summary>
-	public IList<IPFilterPolicy> Policies { get; set; } = new List<IPFilterPolicy>();
+	public IList<IPFilterPolicy> Policies { get; set; } = [];
 
 	/// <summary>
 	/// Name of the global policy.

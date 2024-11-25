@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6;net7;net8</TargetFrameworks>
+    <TargetFrameworks>net8;net9</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>1.2.0</Version>
+	<Version>1.3.0</Version>
 	<Authors>Benjamin Belikov</Authors>
 	<Description>A customizable IP filtering middleware for YARP (Yet Another Reverse Proxy) that adds IP filtering features. This package provides fine-grained control over which IP addresses are allowed or blocked globally, as well as on a per-route basis, ensuring secure and flexible access management.</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -13,12 +13,14 @@
 	<PackageTags>Yarp;ReverseProxy;IP;Filter;CIDR</PackageTags>
 	<PackageReleaseNotes>
 		### Added
-		- .Net 8 as target framework
-		### Fixed
-		- Ambiguous use of `IPNetwork` when targeting .Net 8
+		- .Net 9 as target framework
+		### Removed
+		- .Net 6/7 as target framework
+		### Changed
+		- Code maintenance
 	</PackageReleaseNotes>
 	<Title>YARP ReverseProxy policy based IP filtering.</Title>
-	<Copyright>Copyright (c) 2023 Benjamin Belikov</Copyright>
+	<Copyright>Copyright (c) 2024 Benjamin Belikov</Copyright>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/bbelius/YARP.ReverseProxy.IPFilters</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>

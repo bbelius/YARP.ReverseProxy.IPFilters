@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2024-11-26
+### Added
+- .Net 9 as target framework
+### Removed
+- .Net 6/7 as target framework
+### Changed
+- Code maintenance
+
 ## [1.2.0] - 2023-11-17
 ### Added
 - .Net 8 as target as framework

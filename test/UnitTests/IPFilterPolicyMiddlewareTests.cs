@@ -10,7 +10,9 @@ public class IPFilterPolicyMiddlewareTests
 	private readonly Mock<ILogger<IPFilterPolicyMiddleware>> _loggerMock;
 	private readonly RouteModel _route;
 
-	public IPFilterPolicyMiddlewareTests()
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
+    public IPFilterPolicyMiddlewareTests()
 	{
 		_context = new DefaultHttpContext();
 
@@ -52,12 +54,13 @@ public class IPFilterPolicyMiddlewareTests
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
 		var loggerMock = new Mock<ILogger<IPFilterPolicyMiddleware>>();
-		policyProviderMock.Setup(m => m.GetGlobalPolicy()).Returns((IPFilterPolicy)null);
+		policyProviderMock.Setup(m => m.GetGlobalPolicy()).Returns(null as IPFilterPolicy);
 
-		var middleware = new IPFilterPolicyMiddleware(async _ => { }, loggerMock.Object, policyProviderMock.Object);
 
-		// Act
-		await middleware.InvokeAsync(context);
+        var middleware = new IPFilterPolicyMiddleware(async _ => { }, loggerMock.Object, policyProviderMock.Object);
+
+        // Act
+        await middleware.InvokeAsync(context);
 
 		// Assert
 		Assert.Equal(StatusCodes.Status200OK, context.Response.StatusCode);
@@ -70,7 +73,7 @@ public class IPFilterPolicyMiddlewareTests
 		var globalPolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.BlockList,
-			IPAddresses = new List<string> { "127.0.0.1" }
+			IPAddresses = ["127.0.0.1"]
 		};
 		var testPolicy = new IPFilterPolicy
 		{
@@ -99,7 +102,7 @@ public class IPFilterPolicyMiddlewareTests
 		var routePolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.BlockList,
-			IPAddresses = new List<string> { "127.0.0.1" }
+			IPAddresses = ["127.0.0.1"]
 		};
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
@@ -123,7 +126,7 @@ public class IPFilterPolicyMiddlewareTests
 		var globalPolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.AllowList,
-			IPAddresses = new List<string> { "127.0.0.1" }
+			IPAddresses = ["127.0.0.1"]
 		};
 		var testPolicy = new IPFilterPolicy
 		{
@@ -154,7 +157,7 @@ public class IPFilterPolicyMiddlewareTests
 		var routePolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.AllowList,
-			IPAddresses = new List<string> { "127.0.0.1" }
+			IPAddresses = ["127.0.0.1"]
 		};
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
@@ -176,7 +179,7 @@ public class IPFilterPolicyMiddlewareTests
 		var globalPolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.BlockList,
-			IPNetworks = new List<string> { "127.0.0.0/24" }
+			IPNetworks = ["127.0.0.0/24"]
 		};
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
@@ -198,7 +201,7 @@ public class IPFilterPolicyMiddlewareTests
 		var routePolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.BlockList,
-			IPNetworks = new List<string> { "127.0.0.0/24" }
+			IPNetworks = ["127.0.0.0/24"]
 		};
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
@@ -220,8 +223,8 @@ public class IPFilterPolicyMiddlewareTests
 		var routePolicy = new IPFilterPolicy
 		{
 			Mode = IPFilterPolicyMode.BlockList,
-			IPAddresses = new List<string> { "192.168.0.1" },
-			IPNetworks = new List<string> { "127.0.0.0/24" }
+			IPAddresses = ["192.168.0.1"],
+			IPNetworks = ["127.0.0.0/24"]
 		};
 
 		var policyProviderMock = new Mock<IIPFilterPolicyProvider>();
@@ -236,4 +239,5 @@ public class IPFilterPolicyMiddlewareTests
 		Assert.Equal(StatusCodes.Status403Forbidden, _context.Response.StatusCode);
 	}
 
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 }

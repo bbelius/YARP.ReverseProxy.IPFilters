@@ -3,30 +3,23 @@
 /// <summary>
 /// Exceptions for IPFilterPolicy.
 /// </summary>
-public class IPFilterPolicyException : Exception
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="message">Exception Message</param>
+/// <param name="innerException">Inner exception</param>
+public class IPFilterPolicyException(string message, Exception? innerException = null) : Exception(message, innerException)
 {
-	/// <summary>
-	/// Constructor
-	/// </summary>
-	/// <param name="message">Exception Message</param>
-	/// <param name="innerException">Inner exception</param>
-	public IPFilterPolicyException(string message, Exception? innerException = null) : base(message, innerException)
-	{
-	}
 }
 
 /// <summary>
 /// Exception for when a policy is not found.
 /// </summary>
-public class IPFilterPolicyNotFoundException : IPFilterPolicyException
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="policyName">Name of policy that was requested</param>
+/// <param name="routeName">YARP route ID that requested the policy</param>
+public class IPFilterPolicyNotFoundException(string policyName, string routeName) : IPFilterPolicyException($"Could not find IPFilterPolicy with name {policyName}. Route: {routeName}")
 {
-	/// <summary>
-	/// Constructor
-	/// </summary>
-	/// <param name="policyName">Name of policy that was requested</param>
-	/// <param name="routeName">YARP route ID that requested the policy</param>
-	public IPFilterPolicyNotFoundException(string policyName, string routeName)
-		: base($"Could not find IPFilterPolicy with name {policyName}. Route: {routeName}")
-	{
-	}
 }

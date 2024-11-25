@@ -25,12 +25,12 @@ public class IPFilterPolicy
 	/// <summary>
 	/// The IPAddresses that are allowed or blocked.
 	/// </summary>
-	public List<string> IPAddresses { get; init; } = new();
+	public List<string> IPAddresses { get; init; } = [];
 
 	/// <summary>
 	/// The IPNetworks that are allowed or blocked.
 	/// </summary>
-	public List<string> IPNetworks { get; init; } = new();
+	public List<string> IPNetworks { get; init; } = [];
 
 	/// <summary>
 	/// Returns the parsed IPAddresses as an array of IPAddress objects.

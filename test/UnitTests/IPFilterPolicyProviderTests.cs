@@ -9,7 +9,7 @@ public class IPFilterPolicyProviderTests
 		var policy = new IPFilterPolicy { PolicyName = "TestPolicy" };
 		var policiesConfiguration = new IPFilterPoliciesConfiguration
 		{
-			Policies = new List<IPFilterPolicy> { policy }
+			Policies = [policy]
 		};
 
 		var optionsMonitorMock = new Mock<IOptionsMonitor<IPFilterPoliciesConfiguration>>();
@@ -32,7 +32,7 @@ public class IPFilterPolicyProviderTests
 		var policy = new IPFilterPolicy { PolicyName = "TestPolicy" };
 		var policiesConfiguration = new IPFilterPoliciesConfiguration
 		{
-			Policies = new List<IPFilterPolicy> { policy }
+			Policies = [policy]
 		};
 
 		var optionsMonitorMock = new Mock<IOptionsMonitor<IPFilterPoliciesConfiguration>>();
