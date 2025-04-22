@@ -3,7 +3,7 @@
 /// <summary>
 /// IP filter policies configuration.
 /// </summary>
-public class IPFilterPoliciesConfiguration
+public sealed class IPFilterPoliciesConfiguration
 {
 	/// <summary>
 	/// List of IP filter policies.

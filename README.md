@@ -103,6 +103,9 @@ You can use both, IPNetworks and IPAddresses in a policy. If at least one mathce
 }
 ```
 
+## Tracing
+Activity source name is `BBelius.Yarp.ReverseProxy.IPFilters`.
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 

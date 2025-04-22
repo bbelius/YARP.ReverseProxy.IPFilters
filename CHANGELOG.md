@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-04-22
+### Added
+- Activity in middleware for better tracing
+### Improved
+- Using high performance logging pattern for critical path
+- Most classes now are sealed
+
 ## [1.3.0] - 2024-11-26
 ### Added
 - .Net 9 as target framework

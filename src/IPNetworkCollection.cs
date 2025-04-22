@@ -7,7 +7,7 @@ namespace BBelius.Yarp.ReverseProxy.IPFilters;
 /// <summary>
 /// Trie based IPNetwork collection.
 /// </summary>
-public class IPNetworkCollection
+public sealed class IPNetworkCollection
 {
 	private readonly TrieNode _root = new();
 

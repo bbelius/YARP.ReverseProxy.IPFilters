@@ -20,6 +20,6 @@ public class IPFilterPolicyException(string message, Exception? innerException =
 /// </remarks>
 /// <param name="policyName">Name of policy that was requested</param>
 /// <param name="routeName">YARP route ID that requested the policy</param>
-public class IPFilterPolicyNotFoundException(string policyName, string routeName) : IPFilterPolicyException($"Could not find IPFilterPolicy with name {policyName}. Route: {routeName}")
+public sealed class IPFilterPolicyNotFoundException(string policyName, string routeName) : IPFilterPolicyException($"Could not find IPFilterPolicy with name {policyName}. Route: {routeName}")
 {
 }

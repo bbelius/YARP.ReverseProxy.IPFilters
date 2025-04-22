@@ -7,7 +7,7 @@ namespace BBelius.Yarp.ReverseProxy.IPFilters;
 /// <summary>
 /// Policy for IPFilter. Default values: Blocks all requests.
 /// </summary>
-public class IPFilterPolicy
+public sealed class IPFilterPolicy
 {
 	private HashSet<IPAddress>? _ipAddresses = null;
 	private IPNetworkCollection? _ipNetworks = null;
@@ -36,7 +36,7 @@ public class IPFilterPolicy
 	/// Returns the parsed IPAddresses as an array of IPAddress objects.
 	/// The parsing is done lazily, and the result is cached for subsequent calls.
 	/// </summary>
-	public HashSet<IPAddress> GetIPAddresses() => _ipAddresses ??= new HashSet<IPAddress>(IPAddresses.Select(IPAddress.Parse));
+	public HashSet<IPAddress> GetIPAddresses() => _ipAddresses ??= [.. IPAddresses.Select(IPAddress.Parse)];
 
 	/// <summary>
 	/// Returns the parsed IPNetworks as an array of IPNetwork objects.
