@@ -80,7 +80,7 @@ More information about the YARP middleware pipeline can be found [here](https://
 }
 ```
 
-You can use both, IPNetworks and IPAddresses in a policy. If at least one mathces the filter will be applied.
+You can use both, IPNetworks and IPAddresses, within the same policy. If at least one address matches the filter will be applied.
 
 4. Configure the YARP routes to use the policies:
 
