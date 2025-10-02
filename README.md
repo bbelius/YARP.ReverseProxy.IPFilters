@@ -106,6 +106,12 @@ You can use both, IPNetworks and IPAddresses, within the same policy. If at leas
 ## Tracing
 Activity source name is `BBelius.Yarp.ReverseProxy.IPFilters`.
 
+## Testing
+If this middleware is part of unit tests, set `RemoteIPAddress` to a valid IPAddress. 
+
+Example: 
+https://github.com/bbelius/YARP.ReverseProxy.IPFilters/blob/45ac16e6358185ffb1c6202f309c7076c5a90c40/test/UnitTests/IPFilterPolicyMiddlewareTests.cs#L32 
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
